@@ -48,6 +48,7 @@ const DashboardMain = () => {
 
     const theme = useTheme();
     const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
+    const isMidScreen = useMediaQuery(theme.breakpoints.down('xl'));
 
     useEffect(() => {
         const fetchCompletedForms = async () => {
@@ -69,7 +70,7 @@ const DashboardMain = () => {
             throw new Error(`HTTP error! status: ${response.status}`);
             }
             let data = await response.json();
-            //console.log('Exams Status:',data);
+            console.log('Exams Status:',data);
             return data;
         };
 
@@ -150,6 +151,7 @@ const DashboardMain = () => {
                             nm2={'Particular'}
                             qtdLabel2={countParticular}
                             isSmallScreen={isSmallScreen}
+                            isMidScreen={isMidScreen}
                         />
                         <Typography fontSize={20} textAlign={'center'}>Total de Agendamentos: {countForms}</Typography>
                     </Grid>
@@ -169,6 +171,7 @@ const DashboardMain = () => {
                             nm6={'Superior Cursando'}
                             qtdLabel6={countSuperiorCursando}
                             isSmallScreen={isSmallScreen}
+                            isMidScreen={isMidScreen}
                         />
                         <Typography fontSize={20} textAlign={'center'}>Total de Agendamentos: {countForms}</Typography>
                     </Grid>
@@ -184,11 +187,12 @@ const DashboardMain = () => {
                             nm4={'36+ anos'}
                             qtdLabel4={countAge35Plus}
                             isSmallScreen={isSmallScreen}
+                            isMidScreen={isMidScreen}
                         />
                     </Grid>
                     <Grid item xs={12} sm={12} md={6} lg={6} xg={6} sx={{p: 2}}>
-                        <Box sx={{display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', p: 2, maxWidth: 800, margin:'auto'}}>
-                            <Typography fontSize={isSmallScreen ? 20 : 30} fontWeight={'bold'} textAlign={'center'} mb={3}>Renda Familiar</Typography>
+                        <Box sx={{display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', p: 0, maxWidth: 800, margin:'auto'}}>
+                            <Typography fontSize={isSmallScreen ? 20 : 30} fontWeight={'bold'} textAlign={'center'} mb={1}>Renda Familiar</Typography>
                             <ExamsStatusPie
                             nm1={'Até 1 Salário'} 
                             qtdLabel1={countMenorQue1}
@@ -201,12 +205,13 @@ const DashboardMain = () => {
                             nm5={'40+ Salários'}
                             qtdLabel5={countMaiorQue40}
                             isSmallScreen={isSmallScreen}
+                            isMidScreen={isMidScreen}
                             />
                         </Box>
                     </Grid>
                     <Grid item xs={12} sm={12} md={12} lg={12} xg={12} sx={{p: 2}}>
-                        <Box sx={{display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', p: 2, maxWidth: 800, margin:'auto'}}>
-                            <Typography fontSize={isSmallScreen ? 20 : 30} fontWeight={'bold'} textAlign={'center'} mb={3}>Gênero</Typography>
+                        <Box sx={{display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', p: 0, maxWidth: 800, margin:'auto'}}>
+                            <Typography fontSize={isSmallScreen ? 20 : 30} fontWeight={'bold'} textAlign={'center'} mb={1}>Gênero</Typography>
                             <ExamsStatusPie
                             nm1={'Masculino'} 
                             qtdLabel1={countMasculino}
@@ -219,12 +224,13 @@ const DashboardMain = () => {
                             nm5={'Outros'}
                             qtdLabel5={countOutros}
                             isSmallScreen={isSmallScreen}
+                            isMidScreen={isMidScreen}
                             />
                         </Box>
                     </Grid>
                     <Grid item xs={12} sm={12} md={12} lg={12} xg={12} sx={{p: 2}}>
-                        <Box sx={{display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', p: 2, maxWidth: 800, margin:'auto'}}>
-                            <Typography fontSize={isSmallScreen ? 20 : 30} fontWeight={'bold'} textAlign={'center'} mb={3}>Evolução das Inscrições</Typography>
+                        <Box sx={{display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', p: 0, maxWidth: 800, margin:'auto'}}>
+                            <Typography fontSize={isSmallScreen ? 20 : 30} fontWeight={'bold'} textAlign={'center'} mb={1}>Evolução das Inscrições</Typography>
                             <DailyEvolutionLineChart allForms={dataForms}/>
                         </Box>
                     </Grid>

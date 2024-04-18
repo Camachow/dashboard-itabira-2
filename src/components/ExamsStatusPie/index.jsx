@@ -2,10 +2,11 @@ import { Typography } from "@mui/material";
 import React from "react";
 import { PieChart, Pie, Cell, Tooltip, Legend, ResponsiveContainer } from "recharts";
 
-const PieRechartComponent = ({nm1, qtdLabel1, nm2, qtdLabel2 = 0, nm3, qtdLabel3 = 0, nm4, qtdLabel4 = 0, nm5, qtdLabel5 = 0, nm6, qtdLabel6 = 0, isSmallScreen }) => {
+const PieRechartComponent = ({nm1, qtdLabel1, nm2, qtdLabel2 = 0, nm3, qtdLabel3 = 0, nm4, qtdLabel4 = 0, nm5, qtdLabel5 = 0, nm6, qtdLabel6 = 0, isSmallScreen, isMidScreen }) => {
 
   const qtdTotal = qtdLabel1 + qtdLabel2 + qtdLabel3 + qtdLabel4 + qtdLabel5 + qtdLabel6;
   const COLORS = ["#02b2af","#0094FF", "#FF00FE" ,"#FE8C00", "#b800d8"];
+  
   const pieData = [
     {
       name: nm1,
@@ -68,7 +69,7 @@ const PieRechartComponent = ({nm1, qtdLabel1, nm2, qtdLabel2 = 0, nm3, qtdLabel3
   };
 
   return (
-    <ResponsiveContainer width="100%" height={300}>
+    <ResponsiveContainer width="100%" height={isMidScreen ? 400 : 300}>
       <PieChart>
         <Pie
           data={filteredPieData}
@@ -91,8 +92,8 @@ const PieRechartComponent = ({nm1, qtdLabel1, nm2, qtdLabel2 = 0, nm3, qtdLabel3
         <Tooltip content={<CustomTooltip />} />
         <Legend
           layout='vertical'
-          align={isSmallScreen ? 'center' : 'right'}
-          verticalAlign={isSmallScreen ? 'bottom' : 'middle'}
+          align={isMidScreen ? 'center' : 'right'}
+          verticalAlign={isMidScreen ? 'bottom' : 'middle'}
           wrapperStyle={{
             fontFamily: 'Rajdhani',
             fontSize: '1.5rem',

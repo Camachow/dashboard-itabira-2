@@ -11,8 +11,10 @@ function contarInscricoesPorDia(dataInicial, dataFinal, allForms) {
     // Iterar sobre os dados JSON
     allForms.forEach(item => {
         const data = new Date(item.createdAt);
+        console.log(`data do item ${item.nomeCompleto}: ${data}`);
         // Criar uma data sem hora em UTC
         const dataSemHora = new Date(Date.UTC(data.getFullYear(), data.getMonth(), data.getDate()));
+        console.log(`data sem hora do item ${item.nomeCompleto}: ${dataSemHora}`);
 
         // Verificar se a data está dentro do intervalo especificado
         if (dataSemHora >= inicio && dataSemHora <= fim) {
