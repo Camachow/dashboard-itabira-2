@@ -144,7 +144,7 @@ const DashboardMain = () => {
 
                 <Grid container spacing={2} sx={{margin: 'auto', paddingLeft: 0}}>
                 <Grid item xs={12} sm={12} md={6} lg={6} xg={6} sx={{ p: 2}}>
-                        <Typography fontSize={isSmallScreen ? 20 : 30} fontWeight={'bold'} textAlign={'center'} mb={1}>Escola Pública x Escola Particular</Typography>
+                        <Typography fontSize={isSmallScreen ? 20 : 30} fontWeight={'bold'} textAlign={'center'} mb={1} sx={{ textDecoration: 'underline' }}>Escola Pública x Escola Particular</Typography>
                         <ExamsStatusPie
                             nm1={'Pública'} 
                             qtdLabel1={countPublica}
@@ -156,7 +156,7 @@ const DashboardMain = () => {
                         <Typography fontSize={20} textAlign={'center'}>Total de Agendamentos: {countForms}</Typography>
                     </Grid>
                     <Grid item xs={12} sm={12} md={6} lg={6} xg={6} sx={{ p: 2}}>
-                        <Typography fontSize={isSmallScreen ? 20 : 30} fontWeight={'bold'} textAlign={'center'} mb={1}>Escolaridade</Typography>
+                        <Typography fontSize={isSmallScreen ? 25 : 30} fontWeight={'bold'} textAlign={'center'} mb={1} sx={{ textDecoration: 'underline' }}>Escolaridade</Typography>
                         <ExamsStatusPie
                             nm1={'Medio Incompleto'} 
                             qtdLabel1={countMedioIncompleto}
@@ -176,7 +176,7 @@ const DashboardMain = () => {
                         <Typography fontSize={20} textAlign={'center'}>Total de Agendamentos: {countForms}</Typography>
                     </Grid>
                     <Grid item xs={12} sm={12} md={6} lg={6} xg={6} sx={{p: 2}}>
-                    <Typography fontSize={isSmallScreen ? 20 : 30} fontWeight={'bold'} textAlign={'center'} mb={1}>Faixa Etária</Typography>
+                    <Typography fontSize={isSmallScreen ? 25 : 30} fontWeight={'bold'} textAlign={'center'} mb={1} sx={{ textDecoration: 'underline' }}>Faixa Etária</Typography>
                         <ExamsStatusPie
                             nm1={'15-18 anos'} 
                             qtdLabel1={countAge15to18}
@@ -192,7 +192,7 @@ const DashboardMain = () => {
                     </Grid>
                     <Grid item xs={12} sm={12} md={6} lg={6} xg={6} sx={{p: 2}}>
                         <Box sx={{display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', p: 0, maxWidth: 800, margin:'auto'}}>
-                            <Typography fontSize={isSmallScreen ? 20 : 30} fontWeight={'bold'} textAlign={'center'} mb={1}>Renda Familiar</Typography>
+                            <Typography fontSize={isSmallScreen ? 25 : 30} fontWeight={'bold'} textAlign={'center'} mb={1} sx={{ textDecoration: 'underline' }}>Renda Familiar</Typography>
                             <ExamsStatusPie
                             nm1={'Até 1 Salário'} 
                             qtdLabel1={countMenorQue1}
@@ -211,7 +211,7 @@ const DashboardMain = () => {
                     </Grid>
                     <Grid item xs={12} sm={12} md={12} lg={12} xg={12} sx={{p: 2}}>
                         <Box sx={{display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', p: 0, maxWidth: 800, margin:'auto'}}>
-                            <Typography fontSize={isSmallScreen ? 20 : 30} fontWeight={'bold'} textAlign={'center'} mb={1}>Gênero</Typography>
+                            <Typography fontSize={isSmallScreen ? 25 : 30} fontWeight={'bold'} textAlign={'center'} mb={1} sx={{ textDecoration: 'underline' }}>Gênero</Typography>
                             <ExamsStatusPie
                             nm1={'Masculino'} 
                             qtdLabel1={countMasculino}
@@ -230,7 +230,7 @@ const DashboardMain = () => {
                     </Grid>
                     <Grid item xs={12} sm={12} md={12} lg={12} xg={12} sx={{p: 2}}>
                         <Box sx={{display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', p: 0, maxWidth: 800, margin:'auto'}}>
-                            <Typography fontSize={isSmallScreen ? 20 : 30} fontWeight={'bold'} textAlign={'center'} mb={1}>Evolução das Inscrições</Typography>
+                            <Typography fontSize={isSmallScreen ? 25 : 30} fontWeight={'bold'} textAlign={'center'} mb={1} sx={{ textDecoration: 'underline' }}>Evolução das Inscrições</Typography>
                             <DailyEvolutionLineChart allForms={dataForms}/>
                         </Box>
                     </Grid>

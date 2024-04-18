@@ -11,10 +11,10 @@ function contarInscricoesPorDia(dataInicial, dataFinal, allForms) {
     // Iterar sobre os dados JSON
     allForms.forEach(item => {
         const data = new Date(item.createdAt);
-        console.log(`data do item ${item.nomeCompleto}: ${data}`);
+        //console.log(`data do item ${item.nomeCompleto}: ${data}`);
         // Criar uma data sem hora em UTC
         const dataSemHora = new Date(Date.UTC(data.getFullYear(), data.getMonth(), data.getDate()));
-        console.log(`data sem hora do item ${item.nomeCompleto}: ${dataSemHora}`);
+        //console.log(`data sem hora do item ${item.nomeCompleto}: ${dataSemHora}`);
 
         // Verificar se a data está dentro do intervalo especificado
         if (dataSemHora >= inicio && dataSemHora <= fim) {
@@ -44,11 +44,10 @@ const DailyEvolutionLineChart = ({allForms}) => {
 
   const startDate = "2024-04-15";
   const endDate = (dataLocal >= "2024-05-11") ? "2024-05-11" : dataLocal;
-  console.log("Dia atual", dataLocal);
-  console.log("endDate", endDate);
+
 
   const data = contarInscricoesPorDia(startDate, endDate, allForms);
-  console.log(data);
+
 
   return (
       <ResponsiveContainer width="100%" height= {400}>

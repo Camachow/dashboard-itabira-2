@@ -6,7 +6,7 @@ const PieRechartComponent = ({nm1, qtdLabel1, nm2, qtdLabel2 = 0, nm3, qtdLabel3
 
   const qtdTotal = qtdLabel1 + qtdLabel2 + qtdLabel3 + qtdLabel4 + qtdLabel5 + qtdLabel6;
   const COLORS = ["#02b2af","#0094FF", "#FF00FE" ,"#FE8C00", "#b800d8"];
-  
+  console.log(isSmallScreen, isMidScreen);
   const pieData = [
     {
       name: nm1,
@@ -67,9 +67,9 @@ const PieRechartComponent = ({nm1, qtdLabel1, nm2, qtdLabel2 = 0, nm3, qtdLabel3
     }
     return null;
   };
-
+  
   return (
-    <ResponsiveContainer width="100%" height={isMidScreen ? 400 : 300}>
+    <ResponsiveContainer width="100%" height={(isSmallScreen==0 && isMidScreen) ? 400 : 300}>
       <PieChart>
         <Pie
           data={filteredPieData}
