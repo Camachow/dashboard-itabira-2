@@ -138,7 +138,7 @@ const DashboardMain = () => {
             overflowX: 'hidden',
         }}>
                 <Typography fontSize={isSmallScreen ? 35 : 70} fontWeight={'bold'} textAlign={'center'}>Painel de Inscrições</Typography>
-                <Typography fontSize={isSmallScreen ? 35 : 60} fontWeight={'bold'} textAlign={'center'} sx={{ textDecoration: 'underline' }}>Pequi</Typography>
+                <Typography fontSize={isSmallScreen ? 35 : 60} fontWeight={'bold'} textAlign={'center'}>Pequi {countForms}</Typography>
 
                 <Divider sx={{my:1}}/>
 
