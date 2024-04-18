@@ -33,8 +33,6 @@ const PieRechartComponent = ({nm1, qtdLabel1, nm2, qtdLabel2 = 0, nm3, qtdLabel3
     },
   ];
 
-  console.log(pieData);
-
   const filteredPieData = pieData.filter((item) => item.value > 0);
   
   const RADIAN = Math.PI / 180;
