@@ -245,7 +245,7 @@ const DashboardMain = () => {
                             qtdLabel3={countRacaParda}
                             nm4={'Amarela'}
                             qtdLabel4={countRacaAmarela}
-                            nm5={'IndigenaOuQuilomboa'}
+                            nm5={'Indigena ou Quilombola'}
                             qtdLabel5={countRacaIndigena}
                             nm6={'Outros'}
                             qtdLabel6={countRacaOutros}
