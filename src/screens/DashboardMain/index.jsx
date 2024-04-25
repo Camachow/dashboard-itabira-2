@@ -160,7 +160,6 @@ const DashboardMain = () => {
                             isSmallScreen={isSmallScreen}
                             isMidScreen={isMidScreen}
                         />
-                        <Typography fontSize={20} textAlign={'center'}>Total de Agendamentos: {countForms}</Typography>
                     </Grid>
                     <Grid item xs={12} sm={12} md={6} lg={6} xg={6} sx={{ p: 2}}>
                         <Typography fontSize={isSmallScreen ? 25 : 30} fontWeight={'bold'} textAlign={'center'} mb={1} sx={{ textDecoration: 'underline' }}>Escolaridade</Typography>
@@ -180,7 +179,6 @@ const DashboardMain = () => {
                             isSmallScreen={isSmallScreen}
                             isMidScreen={isMidScreen}
                         />
-                        <Typography fontSize={20} textAlign={'center'}>Total de Agendamentos: {countForms}</Typography>
                     </Grid>
                     <Grid item xs={12} sm={12} md={6} lg={6} xg={6} sx={{p: 2}}>
                     <Typography fontSize={isSmallScreen ? 25 : 30} fontWeight={'bold'} textAlign={'center'} mb={1} sx={{ textDecoration: 'underline' }}>Faixa Etária</Typography>
