@@ -130,6 +130,13 @@ const DashboardMain = () => {
     const countSuperiorCompleto = countUsersWithFieldValue(dataForms, 'escolaridade', 'SuperiorCompleto')
     const countSuperiorCursando = countUsersWithFieldValue(dataForms, 'escolaridade', 'SuperiorCursando')
 
+    const countRacaBranca = countUsersWithFieldValue(dataForms, 'raca', 'Branca')
+    const countRacaPreta = countUsersWithFieldValue(dataForms, 'raca', 'Preta')
+    const countRacaParda = countUsersWithFieldValue(dataForms, 'raca', 'Parda')
+    const countRacaAmarela = countUsersWithFieldValue(dataForms, 'raca', 'Amarela')
+    const countRacaIndigena = countUsersWithFieldValue(dataForms, 'raca', 'IndigenaOuQuilomboa')
+    const countRacaOutros = countUsersWithFieldValue(dataForms, 'raca', 'Outros')
+
     return (
         <Box sx={{ 
             height: '100vh',
@@ -209,7 +216,7 @@ const DashboardMain = () => {
                             />
                         </Box>
                     </Grid>
-                    <Grid item xs={12} sm={12} md={12} lg={12} xg={12} sx={{p: 2}}>
+                    <Grid item xs={12} sm={12} md={6} lg={6} xg={6} sx={{p: 2}}>
                         <Box sx={{display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', p: 0, maxWidth: 800, margin:'auto'}}>
                             <Typography fontSize={isSmallScreen ? 25 : 30} fontWeight={'bold'} textAlign={'center'} mb={1} sx={{ textDecoration: 'underline' }}>Gênero</Typography>
                             <ExamsStatusPie
@@ -223,6 +230,27 @@ const DashboardMain = () => {
                             qtdLabel4={countNaoDeclarado}
                             nm5={'Outros'}
                             qtdLabel5={countOutros}
+                            isSmallScreen={isSmallScreen}
+                            isMidScreen={isMidScreen}
+                            />
+                        </Box>
+                    </Grid>
+                    <Grid item xs={12} sm={12} md={6} lg={6} xg={6} sx={{p: 2}}>
+                        <Box sx={{display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', p: 0, maxWidth: 800, margin:'auto'}}>
+                            <Typography fontSize={isSmallScreen ? 25 : 30} fontWeight={'bold'} textAlign={'center'} mb={1} sx={{ textDecoration: 'underline' }}>Raça</Typography>
+                            <ExamsStatusPie
+                            nm1={'Branca'} 
+                            qtdLabel1={countRacaBranca}
+                            nm2={'Preta'}
+                            qtdLabel2={countRacaPreta}
+                            nm3={'Parda'} 
+                            qtdLabel3={countRacaParda}
+                            nm4={'Amarela'}
+                            qtdLabel4={countRacaAmarela}
+                            nm5={'IndigenaOuQuilomboa'}
+                            qtdLabel5={countRacaIndigena}
+                            nm6={'Outros'}
+                            qtdLabel6={countRacaOutros}
                             isSmallScreen={isSmallScreen}
                             isMidScreen={isMidScreen}
                             />

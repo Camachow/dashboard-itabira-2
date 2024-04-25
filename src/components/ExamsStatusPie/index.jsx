@@ -5,7 +5,7 @@ import { PieChart, Pie, Cell, Tooltip, Legend, ResponsiveContainer } from "recha
 const PieRechartComponent = ({nm1, qtdLabel1, nm2, qtdLabel2 = 0, nm3, qtdLabel3 = 0, nm4, qtdLabel4 = 0, nm5, qtdLabel5 = 0, nm6, qtdLabel6 = 0, isSmallScreen, isMidScreen }) => {
 
   const qtdTotal = qtdLabel1 + qtdLabel2 + qtdLabel3 + qtdLabel4 + qtdLabel5 + qtdLabel6;
-  const COLORS = ["#02b2af","#0094FF", "#FF00FE" ,"#FE8C00", "#b800d8"];
+  const COLORS = ["#02b2af","#0094FF", "#FF00FE" ,"#b800d8","#DC7900", "#FFA93F"];
   console.log(isSmallScreen, isMidScreen);
   const pieData = [
     {
@@ -38,7 +38,8 @@ const PieRechartComponent = ({nm1, qtdLabel1, nm2, qtdLabel2 = 0, nm3, qtdLabel3
   
   const RADIAN = Math.PI / 180;
   const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, value, index }) => {
-    if (value == 0) return null;
+    const percent = (value / qtdTotal) * 100
+    if (value == 0 || percent < 2.7) return null;
     const radius = innerRadius + (outerRadius - innerRadius) * 0.5;
     const x = cx + radius * Math.cos(-midAngle * RADIAN);
     const y = cy + radius * Math.sin(-midAngle * RADIAN);
@@ -61,7 +62,7 @@ const PieRechartComponent = ({nm1, qtdLabel1, nm2, qtdLabel2 = 0, nm3, qtdLabel3
             border: "1px solid #cccc"
           }}
         >
-          <Typography>{`${payload[0].name} : %${percent.toFixed(2)}`}</Typography>
+          <Typography>{`${payload[0].name} : ${payload[0].value} => %${percent.toFixed(2)}`}</Typography>
         </div>
       );
     }
@@ -69,7 +70,7 @@ const PieRechartComponent = ({nm1, qtdLabel1, nm2, qtdLabel2 = 0, nm3, qtdLabel3
   };
   
   return (
-    <ResponsiveContainer width="100%" height={(isSmallScreen==0 && isMidScreen) ? 400 : 300}>
+    <ResponsiveContainer width="100%" height={(isSmallScreen==0 && isMidScreen) ? 420 : 300}>
       <PieChart>
         <Pie
           data={filteredPieData}
@@ -96,7 +97,7 @@ const PieRechartComponent = ({nm1, qtdLabel1, nm2, qtdLabel2 = 0, nm3, qtdLabel3
           verticalAlign={isMidScreen ? 'bottom' : 'middle'}
           wrapperStyle={{
             fontFamily: 'Rajdhani',
-            fontSize: '1.5rem',
+            fontSize: isSmallScreen ? '1.0rem' : '1.5rem',
             fontWeight: 'bold',
             color: '#FF0000',
             marginRight: isSmallScreen ? 'auto' : 100,
