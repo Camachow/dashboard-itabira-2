@@ -272,7 +272,7 @@ const DashboardMain = () => {
                     <Grid item xs={12} sm={12} md={12} lg={12} xg={12} sx={{p: 2}}>
                         <Box sx={{display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', p: 0, maxWidth: 800, margin:'auto'}}>
                             <Typography fontSize={isSmallScreen ? 25 : 30} fontWeight={'bold'} textAlign={'center'} mb={1} sx={{ textDecoration: 'underline' }}>Mais Dados</Typography>
-                            <Typography fontSize={isSmallScreen ? 25 : 40} textAlign={'center'}>Jovens Mães Inscritas {countYoungMothers}</Typography>
+                            <Typography fontSize={isSmallScreen ? 25 : 40} textAlign={'center'}>Jovens Mães Inscritas: {countYoungMothers}</Typography>
                         </Box>
                     </Grid>
                 </Grid>   
