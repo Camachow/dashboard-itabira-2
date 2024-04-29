@@ -2,10 +2,9 @@ import * as React from 'react';
 import {useEffect, useState} from 'react';
 import ExamsStatusPie from '../../components/ExamsStatusPie';
 import {Box, Paper, Typography, CircularProgress, useTheme, useMediaQuery, Divider, Grid} from '@mui/material';
-import AgeRangePie from '../../components/AgeRangePie';
-import IncomePie from '../../components/IncomePie';
-import GenderPie from '../../components/GenderPie';
 import DailyEvolutionLineChart from '../../components/DailyEvolutionLineChart';
+import Header from '../../components/Header';
+import Footer from '../../components/Footer';
 
 function calculateAge(dateOfBirth) {
     const today = new Date();
@@ -77,7 +76,6 @@ const DashboardMain = () => {
             throw new Error(`HTTP error! status: ${response.status}`);
             }
             let data = await response.json();
-            console.log('Exams Status:',data);
             return data;
         };
 
@@ -150,132 +148,150 @@ const DashboardMain = () => {
         <Box sx={{ 
             height: '100vh',
             backgroundColor: '#F5F5F5', 
-            p: 3,
             overflowX: 'hidden',
+            overflowY: 'auto',
+            '&::-webkit-scrollbar': {
+                width: '0.4em', 
+            },
+            '&::-webkit-scrollbar-track': {
+                backgroundColor: '#f1f1f1'
+            },
+            '&::-webkit-scrollbar-thumb': {
+                backgroundColor: '#888',
+            },
+            '&::-webkit-scrollbar-thumb:hover': {
+                backgroundColor: '#555',
+            },
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            position: 'absolute',
         }}>
-                <Typography fontSize={isSmallScreen ? 35 : 70} fontWeight={'bold'} textAlign={'center'}>Painel de Inscrições Pequi</Typography>
-                <Typography fontSize={isSmallScreen ? 25 : 40} textAlign={'center'}>Inscrições: {countForms}</Typography>
+            <Typography fontSize={isSmallScreen ? 35 : 70} fontWeight={'bold'} textAlign={'center'} mt={3}>Painel de Inscrições Pequi</Typography>
+            <Typography fontSize={isSmallScreen ? 25 : 40} textAlign={'center'}>Inscrições: {countForms}</Typography>
 
-                <Divider sx={{my:1}}/>
+            <Divider sx={{my:1}}/>
 
-                <Grid container spacing={2} sx={{margin: 'auto', paddingLeft: 0}}>
+            <Grid container spacing={2} sx={{margin: 'auto', paddingLeft: 0, mb: 3}}>
+            <Grid item xs={12} sm={12} md={6} lg={6} xg={6} sx={{ p: 2}}>
+                    <Typography fontSize={isSmallScreen ? 20 : 30} fontWeight={'bold'} textAlign={'center'} mb={1} sx={{ textDecoration: 'underline' }}>Escola Pública x Escola Particular</Typography>
+                    <ExamsStatusPie
+                        nm1={'Pública'} 
+                        qtdLabel1={countPublica}
+                        nm2={'Particular'}
+                        qtdLabel2={countParticular}
+                        isSmallScreen={isSmallScreen}
+                        isMidScreen={isMidScreen}
+                    />
+                </Grid>
                 <Grid item xs={12} sm={12} md={6} lg={6} xg={6} sx={{ p: 2}}>
-                        <Typography fontSize={isSmallScreen ? 20 : 30} fontWeight={'bold'} textAlign={'center'} mb={1} sx={{ textDecoration: 'underline' }}>Escola Pública x Escola Particular</Typography>
+                    <Typography fontSize={isSmallScreen ? 25 : 30} fontWeight={'bold'} textAlign={'center'} mb={1} sx={{ textDecoration: 'underline' }}>Escolaridade</Typography>
+                    <ExamsStatusPie
+                        nm1={'Medio Incompleto'} 
+                        qtdLabel1={countMedioIncompleto}
+                        nm2={'Medio Completo'}
+                        qtdLabel2={countMedioCompleto}
+                        nm3={'Medio Cursando'} 
+                        qtdLabel3={countMedioCursando}
+                        nm4={'Superior Incompleto'}
+                        qtdLabel4={countSuperiorIncompleto}
+                        nm5={'Superior Completo'} 
+                        qtdLabel5={countSuperiorCompleto}
+                        nm6={'Superior Cursando'}
+                        qtdLabel6={countSuperiorCursando}
+                        isSmallScreen={isSmallScreen}
+                        isMidScreen={isMidScreen}
+                    />
+                </Grid>
+                <Grid item xs={12} sm={12} md={6} lg={6} xg={6} sx={{p: 2}}>
+                <Typography fontSize={isSmallScreen ? 25 : 30} fontWeight={'bold'} textAlign={'center'} mb={1} sx={{ textDecoration: 'underline' }}>Faixa Etária</Typography>
+                    <ExamsStatusPie
+                        nm1={'15-18 anos'} 
+                        qtdLabel1={countAge15to18}
+                        nm2={'19-25 anos'}
+                        qtdLabel2={countAge19to25}
+                        nm3={'26-35 anos'} 
+                        qtdLabel3={countAge26to35}
+                        nm4={'36+ anos'}
+                        qtdLabel4={countAge35Plus}
+                        isSmallScreen={isSmallScreen}
+                        isMidScreen={isMidScreen}
+                    />
+                </Grid>
+                <Grid item xs={12} sm={12} md={6} lg={6} xg={6} sx={{p: 2}}>
+                    <Box sx={{display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', p: 0, maxWidth: 800, margin:'auto'}}>
+                        <Typography fontSize={isSmallScreen ? 25 : 30} fontWeight={'bold'} textAlign={'center'} mb={1} sx={{ textDecoration: 'underline' }}>Renda Familiar</Typography>
                         <ExamsStatusPie
-                            nm1={'Pública'} 
-                            qtdLabel1={countPublica}
-                            nm2={'Particular'}
-                            qtdLabel2={countParticular}
-                            isSmallScreen={isSmallScreen}
-                            isMidScreen={isMidScreen}
+                        nm1={'Até 1 Salário'} 
+                        qtdLabel1={countMenorQue1}
+                        nm2={'1-3 Salários'}
+                        qtdLabel2={countDe1a3}
+                        nm3={'3-10 Salários'} 
+                        qtdLabel3={countDe3a10}
+                        nm4={'10-40 Salários'}
+                        qtdLabel4={countDe10a40}
+                        nm5={'40+ Salários'}
+                        qtdLabel5={countMaiorQue40}
+                        isSmallScreen={isSmallScreen}
+                        isMidScreen={isMidScreen}
                         />
-                    </Grid>
-                    <Grid item xs={12} sm={12} md={6} lg={6} xg={6} sx={{ p: 2}}>
-                        <Typography fontSize={isSmallScreen ? 25 : 30} fontWeight={'bold'} textAlign={'center'} mb={1} sx={{ textDecoration: 'underline' }}>Escolaridade</Typography>
+                    </Box>
+                </Grid>
+                <Grid item xs={12} sm={12} md={6} lg={6} xg={6} sx={{p: 2}}>
+                    <Box sx={{display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', p: 0, maxWidth: 800, margin:'auto'}}>
+                        <Typography fontSize={isSmallScreen ? 25 : 30} fontWeight={'bold'} textAlign={'center'} mb={1} sx={{ textDecoration: 'underline' }}>Gênero</Typography>
                         <ExamsStatusPie
-                            nm1={'Medio Incompleto'} 
-                            qtdLabel1={countMedioIncompleto}
-                            nm2={'Medio Completo'}
-                            qtdLabel2={countMedioCompleto}
-                            nm3={'Medio Cursando'} 
-                            qtdLabel3={countMedioCursando}
-                            nm4={'Superior Incompleto'}
-                            qtdLabel4={countSuperiorIncompleto}
-                            nm5={'Superior Completo'} 
-                            qtdLabel5={countSuperiorCompleto}
-                            nm6={'Superior Cursando'}
-                            qtdLabel6={countSuperiorCursando}
-                            isSmallScreen={isSmallScreen}
-                            isMidScreen={isMidScreen}
+                        nm1={'Masculino'} 
+                        qtdLabel1={countMasculino}
+                        nm2={'Feminino'}
+                        qtdLabel2={countFeminino}
+                        nm3={'Não Binario'} 
+                        qtdLabel3={countNaoBinario}
+                        nm4={'Não Declarado'}
+                        qtdLabel4={countNaoDeclarado}
+                        nm5={'Outros'}
+                        qtdLabel5={countOutros}
+                        isSmagenerollScreen={isSmallScreen}
+                        isMidScreen={isMidScreen}
                         />
-                    </Grid>
-                    <Grid item xs={12} sm={12} md={6} lg={6} xg={6} sx={{p: 2}}>
-                    <Typography fontSize={isSmallScreen ? 25 : 30} fontWeight={'bold'} textAlign={'center'} mb={1} sx={{ textDecoration: 'underline' }}>Faixa Etária</Typography>
+                    </Box>
+                </Grid>
+                <Grid item xs={12} sm={12} md={6} lg={6} xg={6} sx={{p: 2}}>
+                    <Box sx={{display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', p: 0, maxWidth: 800, margin:'auto'}}>
+                        <Typography fontSize={isSmallScreen ? 25 : 30} fontWeight={'bold'} textAlign={'center'} mb={1} sx={{ textDecoration: 'underline' }}>Raça</Typography>
                         <ExamsStatusPie
-                            nm1={'15-18 anos'} 
-                            qtdLabel1={countAge15to18}
-                            nm2={'19-25 anos'}
-                            qtdLabel2={countAge19to25}
-                            nm3={'26-35 anos'} 
-                            qtdLabel3={countAge26to35}
-                            nm4={'36+ anos'}
-                            qtdLabel4={countAge35Plus}
-                            isSmallScreen={isSmallScreen}
-                            isMidScreen={isMidScreen}
+                        nm1={'Branca'} 
+                        qtdLabel1={countRacaBranca}
+                        nm2={'Preta'}
+                        qtdLabel2={countRacaPreta}
+                        nm3={'Parda'} 
+                        qtdLabel3={countRacaParda}
+                        nm4={'Amarela'}
+                        qtdLabel4={countRacaAmarela}
+                        nm5={'Indigena ou Quilombola'}
+                        qtdLabel5={countRacaIndigena}
+                        nm6={'Outros'}
+                        qtdLabel6={countRacaOutros}
+                        isSmallScreen={isSmallScreen}
+                        isMidScreen={isMidScreen} fontSize={isSmallScreen ? 25 : 40} textAlign={'center'}
                         />
-                    </Grid>
-                    <Grid item xs={12} sm={12} md={6} lg={6} xg={6} sx={{p: 2}}>
-                        <Box sx={{display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', p: 0, maxWidth: 800, margin:'auto'}}>
-                            <Typography fontSize={isSmallScreen ? 25 : 30} fontWeight={'bold'} textAlign={'center'} mb={1} sx={{ textDecoration: 'underline' }}>Renda Familiar</Typography>
-                            <ExamsStatusPie
-                            nm1={'Até 1 Salário'} 
-                            qtdLabel1={countMenorQue1}
-                            nm2={'1-3 Salários'}
-                            qtdLabel2={countDe1a3}
-                            nm3={'3-10 Salários'} 
-                            qtdLabel3={countDe3a10}
-                            nm4={'10-40 Salários'}
-                            qtdLabel4={countDe10a40}
-                            nm5={'40+ Salários'}
-                            qtdLabel5={countMaiorQue40}
-                            isSmallScreen={isSmallScreen}
-                            isMidScreen={isMidScreen}
-                            />
-                        </Box>
-                    </Grid>
-                    <Grid item xs={12} sm={12} md={6} lg={6} xg={6} sx={{p: 2}}>
-                        <Box sx={{display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', p: 0, maxWidth: 800, margin:'auto'}}>
-                            <Typography fontSize={isSmallScreen ? 25 : 30} fontWeight={'bold'} textAlign={'center'} mb={1} sx={{ textDecoration: 'underline' }}>Gênero</Typography>
-                            <ExamsStatusPie
-                            nm1={'Masculino'} 
-                            qtdLabel1={countMasculino}
-                            nm2={'Feminino'}
-                            qtdLabel2={countFeminino}
-                            nm3={'Não Binario'} 
-                            qtdLabel3={countNaoBinario}
-                            nm4={'Não Declarado'}
-                            qtdLabel4={countNaoDeclarado}
-                            nm5={'Outros'}
-                            qtdLabel5={countOutros}
-                            isSmagenerollScreen={isSmallScreen}
-                            isMidScreen={isMidScreen}
-                            />
-                        </Box>
-                    </Grid>
-                    <Grid item xs={12} sm={12} md={6} lg={6} xg={6} sx={{p: 2}}>
-                        <Box sx={{display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', p: 0, maxWidth: 800, margin:'auto'}}>
-                            <Typography fontSize={isSmallScreen ? 25 : 30} fontWeight={'bold'} textAlign={'center'} mb={1} sx={{ textDecoration: 'underline' }}>Raça</Typography>
-                            <ExamsStatusPie
-                            nm1={'Branca'} 
-                            qtdLabel1={countRacaBranca}
-                            nm2={'Preta'}
-                            qtdLabel2={countRacaPreta}
-                            nm3={'Parda'} 
-                            qtdLabel3={countRacaParda}
-                            nm4={'Amarela'}
-                            qtdLabel4={countRacaAmarela}
-                            nm5={'Indigena ou Quilombola'}
-                            qtdLabel5={countRacaIndigena}
-                            nm6={'Outros'}
-                            qtdLabel6={countRacaOutros}
-                            isSmallScreen={isSmallScreen}
-                            isMidScreen={isMidScreen} fontSize={isSmallScreen ? 25 : 40} textAlign={'center'}
-                            />
-                        </Box>
-                    </Grid>
-                    <Grid item xs={12} sm={12} md={12} lg={12} xg={12} sx={{p: 2}}>
-                        <Box sx={{display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', p: 0, maxWidth: 800, margin:'auto'}}>
-                            <Typography fontSize={isSmallScreen ? 25 : 30} fontWeight={'bold'} textAlign={'center'} mb={1} sx={{ textDecoration: 'underline' }}>Evolução das Inscrições</Typography>
-                            <DailyEvolutionLineChart allForms={dataForms}/>
-                        </Box>
-                    </Grid>
-                    <Grid item xs={12} sm={12} md={12} lg={12} xg={12} sx={{p: 2}}>
-                        <Box sx={{display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', p: 0, maxWidth: 800, margin:'auto'}}>
-                            <Typography fontSize={isSmallScreen ? 25 : 30} fontWeight={'bold'} textAlign={'center'} mb={1} sx={{ textDecoration: 'underline' }}>Mais Dados</Typography>
-                            <Typography fontSize={isSmallScreen ? 25 : 40} textAlign={'center'}>Jovens Mães Inscritas: {countYoungMothers}</Typography>
-                        </Box>
-                    </Grid>
-                </Grid>   
+                    </Box>
+                </Grid>
+                <Grid item xs={12} sm={12} md={12} lg={12} xg={12} sx={{p: 2}}>
+                    <Box sx={{display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', p: 0, maxWidth: 800, margin:'auto'}}>
+                        <Typography fontSize={isSmallScreen ? 25 : 30} fontWeight={'bold'} textAlign={'center'} mb={1} sx={{ textDecoration: 'underline' }}>Evolução das Inscrições</Typography>
+                        <DailyEvolutionLineChart allForms={dataForms}/>
+                    </Box>
+                </Grid>
+                <Grid item xs={12} sm={12} md={12} lg={12} xg={12} sx={{p: 2}}>
+                    <Box sx={{display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', p: 0, maxWidth: 800, margin:'auto'}}>
+                        <Typography fontSize={isSmallScreen ? 25 : 30} fontWeight={'bold'} textAlign={'center'} mb={1} sx={{ textDecoration: 'underline' }}>Mais Dados</Typography>
+                        <Typography fontSize={isSmallScreen ? 25 : 40} textAlign={'center'}>Jovens Mães Inscritas: {countYoungMothers}</Typography>
+                    </Box>
+                </Grid>
+            </Grid>
+            <Footer/>
         </Box>
     )
 }

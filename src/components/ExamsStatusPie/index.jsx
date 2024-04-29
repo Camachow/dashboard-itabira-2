@@ -6,7 +6,6 @@ const PieRechartComponent = ({nm1, qtdLabel1, nm2, qtdLabel2 = 0, nm3, qtdLabel3
 
   const qtdTotal = qtdLabel1 + qtdLabel2 + qtdLabel3 + qtdLabel4 + qtdLabel5 + qtdLabel6;
   const COLORS = ["#02b2af","#0094FF", "#FF00FE" ,"#b800d8","#DC7900", "#FFA93F"];
-  console.log(isSmallScreen, isMidScreen);
   const pieData = [
     {
       name: nm1,
