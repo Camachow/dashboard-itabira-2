@@ -1,6 +1,5 @@
-import { useState } from 'react'
 import DashboardMain from './screens/DashboardMain'
-import { createTheme, ThemeProvider } from '@mui/material';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 const theme = createTheme({
   typography: {

@@ -1,9 +1,8 @@
-import * as React from 'react';
 import {useEffect, useState} from 'react';
 import ExamsStatusPie from '../../components/ExamsStatusPie';
-import {Box, Paper, Typography, CircularProgress, useTheme, useMediaQuery, Divider, Grid} from '@mui/material';
+import {Box, Typography, CircularProgress, useTheme, useMediaQuery, Divider, Grid} from '@mui/material';
 import DailyEvolutionLineChart from '../../components/DailyEvolutionLineChart';
-import Header from '../../components/Header';
+//import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 
 function calculateAge(dateOfBirth) {
@@ -58,7 +57,11 @@ const DashboardMain = () => {
 
     useEffect(() => {
         const fetchCompletedForms = async () => {
-            const response = await fetch('https://nodered.pdcloud.dev/totalForms/Pequi');
+            const response = await fetch('https://api-hml.pdcloud.dev/form/5b91aec2-e7ae-45e8-8146-bb7e5c40a8b6', {
+                headers: {
+                    'API-KEY': import.meta.env.VITE_API_KEY,
+                }
+            });
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
@@ -67,7 +70,7 @@ const DashboardMain = () => {
         }
 
         const fetchExamsStatus = async () => {
-            const response = await fetch('https://api-hml.pdcloud.dev/form/testData/a09d7656-f2a0-4b33-8c12-c8a4580e5e9d', {
+            const response = await fetch('https://api-hml.pdcloud.dev/form/testData/5b91aec2-e7ae-45e8-8146-bb7e5c40a8b6', {
             headers: {
                 'API-KEY': import.meta.env.VITE_API_KEY,
             }
@@ -168,7 +171,7 @@ const DashboardMain = () => {
             bottom: 0,
             position: 'absolute',
         }}>
-            <Typography fontSize={isSmallScreen ? 35 : 70} fontWeight={'bold'} textAlign={'center'} mt={3}>Painel de Inscrições Pequi</Typography>
+            <Typography fontSize={isSmallScreen ? 35 : 70} fontWeight={'bold'} textAlign={'center'} mt={3}>2º Painel de Inscrições Itabira</Typography>
             <Typography fontSize={isSmallScreen ? 25 : 40} textAlign={'center'}>Inscrições: {countForms}</Typography>
 
             <Divider sx={{my:1}}/>
