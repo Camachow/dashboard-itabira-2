@@ -85,7 +85,7 @@ const DashboardMain = () => {
         // Usa Promise.all para esperar ambas as funções
         Promise.all([fetchCompletedForms(), fetchExamsStatus()])
             .then(([completedForms, examsStatus]) => {
-                setDataForms(completedForms.filter(form => form.examHour !== null));
+                setDataForms(completedForms.filter(form => form.applyMethod === "Enem" || form.applyMethod === "MeritoAcademico" || form.examHour !== null));
                 setCountForms(examsStatus.totalTests);
                 
             })
@@ -172,7 +172,7 @@ const DashboardMain = () => {
             position: 'absolute',
         }}>
             <Typography fontSize={isSmallScreen ? 35 : 70} fontWeight={'bold'} textAlign={'center'} mt={3}>2º Painel de Inscrições Itabira</Typography>
-            <Typography fontSize={isSmallScreen ? 25 : 40} textAlign={'center'}>Inscrições: {countForms}</Typography>
+            <Typography fontSize={isSmallScreen ? 25 : 40} textAlign={'center'}>Inscrições: {dataForms.length}</Typography>
 
             <Divider sx={{my:1}}/>
 
