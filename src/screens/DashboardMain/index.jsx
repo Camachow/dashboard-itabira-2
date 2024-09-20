@@ -57,7 +57,7 @@ const DashboardMain = () => {
 
     useEffect(() => {
         const fetchCompletedForms = async () => {
-            const response = await fetch('https://api-hml.pdcloud.dev/form/5b91aec2-e7ae-45e8-8146-bb7e5c40a8b6', {
+            const response = await fetch('https://form.pdinfinita.com.br/form/5b91aec2-e7ae-45e8-8146-bb7e5c40a8b6', {
                 headers: {
                     'API-KEY': import.meta.env.VITE_API_KEY,
                 }
@@ -70,7 +70,7 @@ const DashboardMain = () => {
         }
 
         const fetchExamsStatus = async () => {
-            const response = await fetch('https://api-hml.pdcloud.dev/form/testData/5b91aec2-e7ae-45e8-8146-bb7e5c40a8b6', {
+            const response = await fetch('https://form.pdinfinita.com.br/form/testData/5b91aec2-e7ae-45e8-8146-bb7e5c40a8b6', {
             headers: {
                 'API-KEY': import.meta.env.VITE_API_KEY,
             }
@@ -144,6 +144,10 @@ const DashboardMain = () => {
     const countRacaAmarela = countUsersWithFieldValue(dataForms, 'raca', 'Amarela')
     const countRacaIndigena = countUsersWithFieldValue(dataForms, 'raca', 'IndigenaOuQuilomboa')
     const countRacaOutros = countUsersWithFieldValue(dataForms, 'raca', 'Outros')
+
+    const countApplyProva = countUsersWithFieldValue(dataForms, 'applyMethod', 'Prova')
+    const countApplyEnem = countUsersWithFieldValue(dataForms, 'applyMethod', 'Enem')
+    const countApplyMerito = countUsersWithFieldValue(dataForms, 'applyMethod', 'MeritoAcademico')
 
     const countYoungMothers = countHowManyYoungMothers(dataForms)
 
@@ -276,6 +280,21 @@ const DashboardMain = () => {
                         qtdLabel5={countRacaIndigena}
                         nm6={'Outros'}
                         qtdLabel6={countRacaOutros}
+                        isSmallScreen={isSmallScreen}
+                        isMidScreen={isMidScreen} fontSize={isSmallScreen ? 25 : 40} textAlign={'center'}
+                        />
+                    </Box>
+                </Grid>
+                <Grid item xs={12} sm={12} md={6} lg={6} xg={6} sx={{p: 2}}>
+                    <Box sx={{display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', p: 0, maxWidth: 800, margin:'auto'}}>
+                        <Typography fontSize={isSmallScreen ? 25 : 30} fontWeight={'bold'} textAlign={'center'} mb={1} sx={{ textDecoration: 'underline' }}>Metodo de Entrada</Typography>
+                        <ExamsStatusPie
+                        nm1={'Prova'} 
+                        qtdLabel1={countApplyProva}
+                        nm2={'Enem'}
+                        qtdLabel2={countApplyEnem}
+                        nm3={'Merito Acadêmico'} 
+                        qtdLabel3={countApplyMerito}
                         isSmallScreen={isSmallScreen}
                         isMidScreen={isMidScreen} fontSize={isSmallScreen ? 25 : 40} textAlign={'center'}
                         />
