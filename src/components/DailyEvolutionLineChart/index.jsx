@@ -42,8 +42,8 @@ const DailyEvolutionLineChart = ({allForms}) => {
   diaAtual.setMinutes(diaAtual.getMinutes() - diaAtual.getTimezoneOffset());
   const dataLocal = diaAtual.toISOString().substr(0, 10);
 
-  const startDate = "2024-04-15";
-  const endDate = (dataLocal >= "2024-05-11") ? "2024-05-11" : dataLocal;
+  const startDate = "2024-09-03";
+  const endDate = (dataLocal >= "2024-11-11") ? "2024-11-11" : dataLocal;
 
 
   const data = contarInscricoesPorDia(startDate, endDate, allForms);
